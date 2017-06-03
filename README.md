@@ -10,6 +10,10 @@ GMaps recently implemented two-finger zooming for their iframes to combat this, 
 
 That's where this plugin comes to the rescue by hiding the sub-component behind a protective layer that can be toggled on and off, either via button, a hover-timeout or both. As long as it is active, a mouse wheel action or swipe gesture above the protected elemet will never be interpreted to have occurred inside the sub-component, but above it, so the page continues to scroll without any interruptions.  
 
+## Live-Demo:
+
+[Try it in action here](http://webentwinkler.net/projects/jquery-plugins/scroll-swipe-protection/demo.html)
+
 ## Usage:
 
 This will enable the plugin on all basic Google Maps iframes:
