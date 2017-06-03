@@ -1,0 +1,76 @@
+<html class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Scroll Swipe Protection - Demo Page</title>
+  <style rel="stylesheet" type="text/css">
+    body{
+      font-family: "Lucida Sans Unicode", Lucida, Arial, "Helvetica Neue", Helvetica, sans-serif;
+      color: #333;
+      background-color: #eee;
+    }
+    h1{
+      font-size: 42px;
+      color: #333366;
+    }
+    section{
+      display:block;
+      width: 100%;
+      margin: 40px 0;
+    }
+    iframe{
+      width: 100%;
+      height: 640px;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h1>Scroll Swipe Protection - Demo Page</h1>
+    <p id="intro">
+      This page demonstrates the problem the plugin attempts to resolve. If you scroll down now, before activating the plugin, the two implemented Google Map Embeds will prevent you from scrolling any further (at least on desktop devices, Google recently implemented a fix for mobile devices). <br />
+      To prevent those unintended interruptions, click the following link:<br />
+      <a href="#activate" id="activate">Activate Scroll Swipe Protection</a>
+    </p>
+  </section>
+  <section>
+    <h2>Why all this filler text?</h2>
+    <p>To correctly display the problem, the blocking element must actually be at the bottom of the page or even initially out of view, so the following paragraphs are simply here to ensure exactly that.</p>
+    <p>Lorem</p>
+    <p>ipsum</p>
+    <p>dolor</p>
+    <p>sit</p>
+    <p>amet</p>
+    <p>consetetur</p>
+    <p>adipiscing</p>
+    <p>elit</p>
+    <p>et</p>
+    <p>dolor</p>
+    <p>ipsum</p>
+    <p>lorem.</p>
+  </section>
+  <section>
+    <h2 id="problem">And here are the problematic elements:</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79754.74916869673!2d7.417392346035847!3d51.341733468065605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b93b7fd73c28db%3A0x4360d62681d936d6!2sHagen%2C+Deutschland!5e0!3m2!1sde!2sus!4v1496518422872" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d155419.8652139087!2d13.286064474865997!3d52.50745920312355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e373f035901%3A0x42120465b5e3b70!2sBerlin%2C+Deutschland!5e0!3m2!1sde!2sus!4v1496517383577" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </section>  
+  <section>
+    <h2>Potentially blocked content</h2>
+    <p>This is the part of the web page, you cannot normally reach when your scrolling action gets transferred to the iframe instead of staying on the page you were initially scrolling.</p>
+  </section>
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="jquery.scroll-swipe-protection.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#activate').click(function(e){
+        e.preventDefault();
+        $('iframe[src^="https://www.google.com/maps/embed?"]').scrollSwipeProtection({ createWrapper:true, hoverTimeoutMs: 0 });
+        $(this).unbind().remove();
+        $('#intro').html('The plugin now protects the embeds from involuntary scroll interactions. In order to be able to access the map embeds, click/tap the icon in the top right. By default, you could also wait for a little over a second while the mouse cursor hovers over it and it would auto-unlock, but that behavior has been deactivated for this demonstration.');
+        $('#problem').html('The protected elements:');
+      });
+    });
+  </script>
+</body>
+</html>
