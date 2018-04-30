@@ -4,15 +4,14 @@
 This plugin generates overlays on iframes and other scrollable sub-containers to prevent swipe- and scroll-blocking of websites.  
 
 Scroll-blocking is a behavior that can occur when scrollable sub-components are used on a website. Common examples would be an iframe, a block element made scrollable via CSS (overflow: scroll / auto) or a JavaScript plugin that generates custom scroll bars.  
-Scrolling the page gets interrupted as soon as this sub-component lands under the mouse cursor or a mobile device user swipes over it, at which point the scrolling wheel or swipe gesture will no longer continue scrolling the page but starts interacting with that scrollable sub-component instead. In the case of an embedded Google Map, that might result in an involuntary zoom-in action on the map.  
-If that sub-component stretches across the entire width of the page, the only way to scroll past it would be to use the scroll bar handles, which is extremely annoying for most users. And mobile devices don't even have those, so there the problem is even more severe, as all parts below the sub-component could become complety inaccessible, because the user can never scroll past the element that absorbs all swipe gestures that were actually intended to continue scrolling the page.  
-GMaps recently implemented two-finger zooming for their iframes to combat this, but lots of other scrollable components still have this problem and GMaps still zooms in on desktop browsers.  
+Scrolling the page gets interrupted as soon as this sub-component lands under the mouse cursor or a mobile device user swipes over it, at which point the scrolling wheel or swipe gesture will no longer continue scrolling the page but starts interacting with that scrollable sub-component instead. In the case of an embedded Google Map, that used to result in an involuntary zoom-in action on the map (which was actually the main reason behind the development of this plugin), up until mid-2017 when Google began to implement overlays that give users the hint to either pinch to zoom or hold down Ctrl while using the mouse wheel.  
+If an affected sub-component stretches across the entire width of the page, the only way to scroll past it would be to use the scroll bar handles, which is extremely annoying for most users. And mobile devices don't even have those, so there the problem is even more severe, as all parts below the sub-component could become complety inaccessible, because the user can never scroll past the element that absorbs all swipe gestures that were actually intended to continue scrolling the page.  
 
 That's where this plugin comes to the rescue by hiding the sub-component behind a protective layer that can be toggled on and off, either via button, a hover-timeout or both. As long as it is active, a mouse wheel action or swipe gesture above the protected elemet will never be interpreted to have occurred inside the sub-component, but above it, so the page continues to scroll without any interruptions.  
 
 ## Live-Demo:
 
-[Try it in action here](http://webentwinkler.net/projects/jquery-plugins/scroll-swipe-protection/demo.html)
+[Try it in action here](https://webentwinkler.net/code-projects/javascript/demos/scroll-swipe-protection/demo.html)
 
 ## Usage:
 
